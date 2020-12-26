@@ -52,7 +52,7 @@ jobs:
        - name: Loop workflow
          continue-on-error: true
          run: |
-              git clone https://${{ secrets.GHUSER }}:${{ secrets.GHPASS }}@github.com/username/workflow-for-tleech.git loop
+              git clone https://${{ secrets.GHUSER }}:${{ secrets.GHPASS }}@github.com/${{ secrets.GHUSER }}/workflow-for-tleech.git loop
               cd loop
               echo "1" >> loop.txt
               git add loop.txt
