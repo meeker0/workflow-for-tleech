@@ -41,13 +41,13 @@ jobs:
            ls
            cd source
            sudo docker container prune --force
-           sudo docker build . -t ssh-git
+           sudo docker build . -t hell_bot
            
        - name: running Docker
          timeout-minutes: 340
          continue-on-error: true
          run: |
-            sudo docker run ssh-git
+            sudo docker run hell_bot
            
        - name: Loop workflow
          continue-on-error: true
