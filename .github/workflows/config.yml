@@ -41,13 +41,13 @@ jobs:
            ls
            cd source
            sudo docker container prune --force
-           sudo docker build . -t hell_bot
+           sudo docker build . -t torrent-leech
            
        - name: running Docker
          timeout-minutes: 340
          continue-on-error: true
          run: |
-            sudo docker run hell_bot
+            sudo docker run torrent-leech
            
        - name: Loop workflow
          continue-on-error: true
@@ -57,3 +57,12 @@ jobs:
               echo "1" >> loop.txt
               git add loop.txt
               git commit -m "Workflow : Loop"
+              expect -c "
+              spawn git push -f 
+              expect \"Username\"
+              send \"${{ secrets.GHUSER }}\r\"
+              expect \"Password\"
+              send \"${{ secrets.GHPASS }}\r\"
+              expect \"main -> main\"
+              set timeout -10
+              interact"
