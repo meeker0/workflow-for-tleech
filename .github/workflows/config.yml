@@ -41,13 +41,13 @@ jobs:
            ls
            cd source
            sudo docker container prune --force
-           sudo docker build . -t torrent-leech
+           sudo docker build . -t qbit-1
            
        - name: running Docker
          timeout-minutes: 340
          continue-on-error: true
          run: |
-            sudo docker run torrent-leech
+            sudo docker run qbit-1
            
        - name: Loop workflow
          continue-on-error: true
