@@ -41,13 +41,13 @@ jobs:
            ls
            cd source
            sudo docker container prune --force
-           sudo docker build . -t qbit-1
+           sudo docker build . -t tgleech
            
        - name: running Docker
          timeout-minutes: 340
          continue-on-error: true
          run: |
-            sudo docker run qbit-1
+            sudo docker run tgleech
            
        - name: Loop workflow
          continue-on-error: true
